@@ -1,0 +1,46 @@
+.Cards{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.Card {
+  border: 3px solid black;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 5vh;
+
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  
+}
+
+.Card .Title{
+  padding: 5px 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+.Card .Title .cityTitle{
+  color: black;
+  font-size: 1.3rem;
+  font-weight: 900;
+  
+}
+.Card .Title .cityPrice{
+  color: blue;
+  font-size: 1.0em;
+  font-weight: 400;
+}
+.Card .Content{
+  flex: 1;
+}
+@media screen and (max-width: 770px) {
+  .Cards{
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+  }
+}

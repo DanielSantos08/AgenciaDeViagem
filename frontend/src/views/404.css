@@ -1,0 +1,11 @@
+.PagError{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    flex: 1;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    min-width: 300px;
+}
