@@ -20,33 +20,34 @@ public class Cliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private Long id;
+	private Long idCliente;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<Passagem> passagem = new ArrayList<Passagem>();
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 50)
 	private String name;
 		
-	@Column(nullable = false)
+	@Column( length = 11)
 	private String cpf;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 50)
 	private String email;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 8)
 	private String password;
 
 	public Cliente() {
 	}
 
-	public Long getId() {
-		return id;
+	
+	public Long getIdCliente() {
+		return idCliente;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public String getName() {

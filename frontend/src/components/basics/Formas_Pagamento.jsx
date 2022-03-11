@@ -1,4 +1,4 @@
-import ImgPagamentos from "../../components/imagens/forma-de-pagamento-grande.png"
+import ImgPagamentos from "../basics/imagens/forma-de-pagamento-grande.png"
 import "../../App.css";
 
 export default function Pagamentos(){

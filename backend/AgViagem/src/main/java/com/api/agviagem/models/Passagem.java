@@ -20,11 +20,11 @@ public class Passagem implements Serializable {
 	private Long idPassagem;
 	
 	@ManyToOne
-	@JoinColumn(name= "idCliente")
+	@JoinColumn(name= "idCliente", nullable = false)
 	private Cliente cliente;
 	
 	@ManyToOne
-	@JoinColumn(name= "idDestino")
+	@JoinColumn(name= "idDestino", nullable = false)
 	private Destinos destino;
 
 	public Passagem() {

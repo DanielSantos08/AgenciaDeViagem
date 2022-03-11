@@ -23,13 +23,13 @@ public class Destinos implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idDestino;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 60)
 	private String city;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 50)
 	private String state;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 50)
 	private String country;
 	
 	@JsonIgnore

@@ -15,7 +15,7 @@ export default props => {
            <span className="cityTitle">{props.titulo}</span> 
            <span className="cityPrice">R$ {props.preco}</span> 
         </div>
-        <Link className="btn btn-success" to="#">Comprar</Link> 
+        <Link className="btn btn-success" to="Passagem">Comprar</Link> 
         </div>
     )
 }
