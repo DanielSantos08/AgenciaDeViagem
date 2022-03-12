@@ -1,0 +1,17 @@
+package com.api.agviagem.validations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.api.agviagem.repositories.ClienteRepository;
+
+@Service
+public class ValidationsService {
+	
+	@Autowired
+	ClienteRepository clienteRepository;
+	
+	public boolean existsBycpf(String cpf) {
+		return clienteRepository.existsBycpf(cpf);
+	}
+}

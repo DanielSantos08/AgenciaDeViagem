@@ -1,0 +1,85 @@
+package com.api.agviagem.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class enderecoPessoa {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private Long idEnderecoPessoa;
+	
+	@Column(nullable = false)
+	private String cep;
+	
+	@Column(nullable = false)
+	private String rua;
+	
+	@Column(nullable = false)
+	private String bairro;
+	
+	@Column(nullable = false)
+	private String cidade;
+	
+	@ManyToOne
+	@JoinColumn(name= "Pessoa", nullable = false)
+	private Pessoa pessoa;
+	
+	public enderecoPessoa() {
+	}
+
+	public Long getIdEnderecoPessoa() {
+		return idEnderecoPessoa;
+	}
+
+	public void setIdEnderecoPessoa(Long idEnderecoPessoa) {
+		this.idEnderecoPessoa = idEnderecoPessoa;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+	
+}

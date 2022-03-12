@@ -1,0 +1,5 @@
+package com.api.agviagem.validations;
+
+public interface ValidationsInterface {
+
+}

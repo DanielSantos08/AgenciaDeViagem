@@ -1,0 +1,15 @@
+package com.api.agviagem.validations;
+
+import org.springframework.stereotype.Service;
+
+import com.api.agviagem.repositories.ClienteRepository;
+
+@Service
+public class ValidationsService {
+	
+	ClienteRepository clienteRepository;
+	
+	public boolean existsBycpf(String cpf) {
+		return clienteRepository.existsBycpf(cpf);
+	}
+}

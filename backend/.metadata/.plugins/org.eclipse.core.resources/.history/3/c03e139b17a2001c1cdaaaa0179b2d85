@@ -1,0 +1,19 @@
+package com.api.agviagem.models;
+
+import javax.persistence.Column;
+
+public class Pessoa {
+	
+	@Column(nullable = false, length = 50)
+	private String name;
+		
+	@Column(nullable = false, unique = true ,length = 11)
+	private String cpf;
+	
+	@Column(nullable = false)
+	private String endereco;
+	
+	@Column(nullable = false, unique= true,  length = 50)
+	private String email;
+
+}

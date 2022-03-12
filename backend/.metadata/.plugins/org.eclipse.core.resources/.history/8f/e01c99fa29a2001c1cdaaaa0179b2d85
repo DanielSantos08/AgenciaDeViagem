@@ -1,0 +1,9 @@
+package com.api.agviagem.models;
+
+public class EnderecoCliente {
+
+	private String rua;
+	private String bairro;
+	private String cidade;
+	
+}

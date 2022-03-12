@@ -1,0 +1,5 @@
+package com.api.agviagem.models.validations;
+
+public class ClienteValidation {
+
+}

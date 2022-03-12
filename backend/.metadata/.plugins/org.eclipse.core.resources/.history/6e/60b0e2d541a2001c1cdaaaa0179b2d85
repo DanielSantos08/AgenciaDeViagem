@@ -1,0 +1,39 @@
+package com.api.agviagem.validations;
+
+import javax.persistence.Column;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+public class ValidationCliente {
+	
+	@NotBlank
+	@Size(max = 50)
+	private String name;
+		
+	//@CPF
+	@NotBlank
+	private String cpf;
+	
+	@NotBlank
+	@Size(max=9)
+	private String cep;
+	
+	@NotBlank
+	private String rua;
+	
+	@NotBlank
+	private String bairro;
+	
+	@NotBlank
+	private String cidade;
+
+	@NotBlank
+	@Email
+	private String email;
+	
+	@NotBlank
+	@Size(max=8)
+	private String password;
+	
+}

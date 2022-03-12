@@ -1,0 +1,29 @@
+package com.api.agviagem.models;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+public class Pessoa {
+	
+	@Column(nullable = false, length = 50)
+	private String name;
+		
+	@Column(nullable = false, unique = true ,length = 11)
+	private String cpf;
+	
+	@Column(nullable = false)
+	private String endereco;
+	
+	@Column(nullable = false, unique= true,  length = 50)
+	private String email;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "pessoa")
+	private List<enderecoPessoa> passagem = new ArrayList<enderecoPessoa>();
+
+}

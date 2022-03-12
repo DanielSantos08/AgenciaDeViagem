@@ -1,0 +1,10 @@
+package com.api.agviagem.validations;
+
+import com.api.agviagem.repositories.ClienteRepository;
+
+public class ValidationsService {
+	
+	public boolean existsBycpf(String cpf) {
+		return clienteRepository.existsBycpf(cpf);
+	}
+}
