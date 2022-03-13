@@ -5,14 +5,34 @@
     font-family: 'Noto Sans', sans-serif;
     pointer-events: painted;
 }
-header, footer, .Carousel, .FormaPagamento, #passagens{
-    min-width: 300px;
-}
 img{
     height: 30rem;
     width: 100%;
 }
-p{
-    padding: 0;
-    margin: 0;
+footer{
+    position: relative;
+    height: 5vh;
+    bottom: 0;
+    width: 100%;
+    background: rgb(255,193,0);
+    background: linear-gradient(90deg, rgba(255,193,0,1) 34%, rgba(0,44,255,1) 74%, rgba(121,9,120,1) 88%);
 }
+#divFooter{
+    background: rgb(255,193,0);
+    background: linear-gradient(90deg, rgba(255,193,0,1) 34%, rgba(0,44,255,1) 74%, rgba(121,9,120,1) 88%);
+}
+@media screen and (max-width: 770px) {
+    body{
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    #divFooter{
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5vh;
+    }
+  }

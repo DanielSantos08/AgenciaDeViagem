@@ -1,12 +1,12 @@
 import React from "react";
 import "../../App.css";
+import Card from "../../components/funcionais/Card";
 import ImgSalvador from "../../components/basics/imagens/Destinos/Salvador-Ba.jpg";
 import ImgRioDeJaneiro from "../../components/basics/imagens/Destinos/RioDeJaneiro-RJ.jpg";
 import ImgSaoPaulo from "../../components/basics/imagens/Destinos/sao_paulo.jpg";
 import ImgChapada from "../../components/basics/imagens/Destinos/chapada-dos-veadeiros.jpg";
 import ImgNoronha from "../../components/basics/imagens/Destinos/fernandodenoronhaPE.jpg";
 import ImgCuritiba from "../../components/basics/imagens/Destinos/Curitiba.jpg";
-import Card from "../../components/funcionais/Card";
 
 
 export default function Produtos() {

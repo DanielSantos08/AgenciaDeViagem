@@ -15,7 +15,7 @@ class DestinosAxios{
     deleteDestinos(idDestinos){
         return axios.delete(DestinosApi+ "/" +idDestinos)
     }
-    putDestinos(destinos, idDestinos){
+    putDestinos(idDestinos, destinos){
         return axios.put(DestinosApi+ "/" + idDestinos, destinos)
     }
 }

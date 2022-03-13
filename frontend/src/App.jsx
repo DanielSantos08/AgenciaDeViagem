@@ -1,18 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-import Destinos from "./views/Destinos/Destinos";
-import Pacotes from "./views/Destinos/Pacotes";
-import Contato from "./views/Contato";
+import './App.css';
 import Index from "./views/Index";
+import Contato from "./views/Contato";
 import Menu from "./components/basics/Menu";
 import Footer from "./components/basics/Footer";
-import Formas_Pagamento from "./components/basics/Formas_Pagamento";
-import './App.css';
 import Error from "./components/basics/404";
 import Cliente from "./views/Cliente/Perfil";
-import Passagem from "./views/Passagem/Passagem";
-import Passagens from "./views/Passagem/Passagens";
 import Cadastro from './views/Cliente/Cadastro'
-import Destino from "./views/Destinos/Destino";
+import Destinos from "./views/Destinos/Destinos";
+import CriarDestino from "./views/Destinos/CriarDestino";
+import Pacotes from "./views/Destinos/Pacotes";
+import Passagem from "./views/Passagem/Passagem";
+import MinhasPassagens from "./views/Passagem/MinhasPassagens";
+import PutDeleteDestinos from './views/Destinos/PutDeleteDestinos'
 
 
 const App = props => (
@@ -20,17 +20,18 @@ const App = props => (
       <Menu />
       <Routes>
         <Route exact path="/" element={<Index/>} />
-        <Route path="/Destinos" element={<Destinos/>} />
-        <Route path="/Pacotes" element={<Pacotes/>} />
         <Route path="/Contato" element={<Contato/>} />
         <Route path="/Cliente" element={<Cliente/>} />
-        <Route path="/Passagem" element={<Passagem/>} />
-        <Route path="/Passagens" element={<Passagens/>} />
         <Route path="/Cadastro" element={<Cadastro/>} />
-        <Route path="/Destino" element={<Destino/>}/>
+        <Route path="/Destinos" element={<Destinos/>} />
+        <Route path="/CriarDestino" element={<CriarDestino/>}/>
+        <Route path="/Pacotes" element={<Pacotes/>} />
+        <Route path="/Passagem" element={<Passagem/>} />
+        <Route path="/MinhasPassagens" element={<MinhasPassagens/>} />
+        <Route path="/PutDeleteDestinos" element={<PutDeleteDestinos/>} />
+        <Route path="/Destinos-Update/:idDestino" element={<CriarDestino/>} />
         <Route path="*" element={<Error/>} />
       </Routes>
-      <Formas_Pagamento/>
       <Footer />
     </BrowserRouter>
   );

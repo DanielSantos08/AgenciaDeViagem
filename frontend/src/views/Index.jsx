@@ -1,12 +1,12 @@
 import React from "react";
 import "../App.css";
+import Card from "../components/funcionais/Card";
+import Carousel from "../components/funcionais/Carousel";
 import ImgSalvador from "../components/basics/imagens/Destinos/Salvador-Ba.jpg";
 import ImgRioDeJaneiro from "../components/basics/imagens/Destinos/RioDeJaneiro-RJ.jpg";
-import Carousel from "../components/funcionais/Carousel";
-import ImgOcean from "../components/basics/imagens/calm_ocean.jpg"
 import ImgChapadaVeadeiros from "../components/basics/imagens/Destinos/chapada-dos-veadeiros.jpg"
 import ImgNoronha from "../components/basics/imagens/Destinos/fernandodenoronhaPE.jpg"
-import Card from "../components/funcionais/Card";
+import ImgOcean from "../components/basics/imagens/calm_ocean.jpg"
 
 export default function Home() {
   return (

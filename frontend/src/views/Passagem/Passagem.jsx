@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Pass from "../../services/PassagemClass";
+import PassagemAxios from "../../services/PassagemClass";
 import DestinosAxios from "../../services/DestinosClass"
 
 export default function Create() {
-  const [cliente, setCliente] = useState({idCliente: "1"});
+  const [cliente, setCliente] = useState({idCliente: ""});
   const [destino, setDestino] = useState({idDestino: ""});
   const [destinos, setDestinos] = useState([]);
-  const { id } = useParams();
+  const [formaPagamento, setFormaPagamento] = useState("");
+  const { idPassagem } = useParams();
+ 
   const navigate = useNavigate();
 
   const getDestinos = () => {
@@ -26,14 +28,14 @@ export default function Create() {
   const criarOuEditarPassagem = (e) => {
     e.preventDefault();
 
-    const passagem = { cliente, destino };
+    const passagem = { cliente, destino, formaPagamento };
 
-    if (id) {
-      Pass.updatePassagem(id, passagem).then((response) => {
+    if (idPassagem) {
+      PassagemAxios.putPassagem(idPassagem, passagem).then((response) => {
         navigate("/");
       });
     } else {
-      Pass.createPassagem(passagem).then((response) => {
+      PassagemAxios.postPassagem(passagem).then((response) => {
         navigate("/");
       });
     }
@@ -41,11 +43,12 @@ export default function Create() {
 
   useEffect(() => {
     function getPassagemById() {
-      if (id) {
-        Pass.getPassagemById(id)
+      if (idPassagem) {
+        PassagemAxios.getPassagemById(idPassagem)
           .then((response) => {
-            setCliente({idCliente: response.data.idCliente});
+            setCliente({idCliente: response.data.idPessoa});
             setDestino({idDestino: response.data.idDestino});
+            setFormaPagamento(response.data.formaPagamento);
           })
           .catch((error) => {
             console.log(error);
@@ -54,14 +57,15 @@ export default function Create() {
     }
 
     getPassagemById();
-  }, [id]);
+  }, [idPassagem]);
 
   return (
+    <main>
     <div className="container py-3">
       <form>
         <fieldset>
           <legend>
-            <h2 className="text-center">{id ? "Editar" : "Comprar"}</h2>
+            <h2 className="text-center">{idPassagem ? "Editar" : "Comprar"}</h2>
           </legend>
           <div className="mb-3">
 
@@ -75,12 +79,12 @@ export default function Create() {
             
               onChange={(e) => setDestino({ idDestino: Number.parseInt(e.target.value)})}>
               
-              <option value="DEFAULT" >{id ? destino.city : 'Escolha um Destino'}</option>
+              <option value="DEFAULT" >{idPassagem ? destino.city : 'Escolha um Destino'}</option>
               {destinos.map((destino) => (
                 <option key={destino.idDestino} value={destino.idDestino}>
                   {destino.city} 
                 </option> ))}
-            </select>
+            </select> 
 
             <label htmlFor="id_cliente" className="form-label">
               ID do Cliente
@@ -91,8 +95,19 @@ export default function Create() {
               className="form-control"
               placeholder="Digite o seu id de Cliente"
               value={cliente}
-              onChange={(e) => setCliente({idCliente: Number.parseInt(e.target.value)} )}
+              onChange={(e) => setCliente({idPessoa: Number.parseInt(e.target.value)} )}
             /> 
+              <label htmlFor="passagem">
+            Forma de Pagamento:
+            </label>
+            <input
+              type="text"
+              id="formaPagamento"
+              className="form-control"
+              placeholder="Digite a Forma de Pagamento"
+              value={formaPagamento}
+              onChange={(e) => setFormaPagamento(e.target.value)}
+            />
           </div>
 
           <button
@@ -112,5 +127,6 @@ export default function Create() {
         </fieldset>
       </form>
     </div>
+    </main>
   );
 }

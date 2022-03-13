@@ -7,13 +7,17 @@ export default function Create() {
   const [cpf, setCpf] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [cep, setCep] = useState("");
+  const [rua, setRua] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
   const criarOuEditarCliente = (e) => {
     e.preventDefault();
 
-    const cliente = {name, cpf, email, password};
+    const cliente = {name, cpf, email, password, cep, rua, bairro, cidade};
 
     if (id) {
       ClienteAxios.putCliente(id, cliente).then((response) => {
@@ -35,6 +39,10 @@ export default function Create() {
             setCpf(response.data.cpf);
             setEmail(response.data.email);
             setPassword(response.data.password);
+            setCep(response.data.cep);
+            setRua(response.data.rua);
+            setBairro(response.data.bairro);
+            setCidade(response.data.cidade);
           })
           .catch((error) => {
             console.log(error);
@@ -46,14 +54,14 @@ export default function Create() {
   }, [id]);
 
   return (
-    <div className="container py-3">
+    <div className="d-flex justify-content-center">
       <form>
         <fieldset>
           <legend>
-            <h2 className="text-center">{id ? "Editar" : "Crie sua conta"}</h2>
+            <h2 className="text-center mt-3">{id ? "Editar" : "Crie sua conta"}</h2>
           </legend>
-          <div className="mb-3">
-            <label htmlFor="cliente">
+          <div className="d-flex flex-wrap m-4">
+            <label htmlFor="cliente" className="m-2">
             NOME:
             </label>
             <input
@@ -64,7 +72,7 @@ export default function Create() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <label htmlFor="cliente">
+            <label htmlFor="cliente" className="m-2">
             CPF:
             </label>
             <input
@@ -75,7 +83,51 @@ export default function Create() {
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
             />
-            <label htmlFor="cliente">
+             <label htmlFor="cliente" className="m-2">
+            CEP:
+            </label>
+            <input
+              type="text"
+              id="cep"
+              className="form-control"
+              placeholder="Digite seu CEP"
+              value={cep}
+              onChange={(e) => setCep(e.target.value)}
+            />
+             <label htmlFor="cliente" className="m-2">
+            RUA:
+            </label>
+            <input
+              type="text"
+              id="rua"
+              className="form-control"
+              placeholder="Digite sua rua"
+              value={rua}
+              onChange={(e) => setRua(e.target.value)}
+            />
+             <label htmlFor="cliente" className="m-2">
+            BAIRRO:
+            </label>
+            <input
+              type="text"
+              id="bsirro"
+              className="form-control"
+              placeholder="Digite seu Bairro"
+              value={bairro}
+              onChange={(e) => setBairro(e.target.value)}
+            />
+             <label htmlFor="cliente" className="m-2">
+            CIDADE:
+            </label>
+            <input
+              type="text"
+              id="cidade"
+              className="form-control"
+              placeholder="Digite sua Cidade"
+              value={cidade}
+              onChange={(e) => setCidade(e.target.value)}
+            />
+            <label htmlFor="cliente" className="m-2">
             E-MAIL:
             </label>
             <input
@@ -86,7 +138,7 @@ export default function Create() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label htmlFor="cliente">
+            <label htmlFor="cliente" className="m-2">
             SENHA:
             </label>
             <input
@@ -101,15 +153,14 @@ export default function Create() {
             
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary m-4"
             onClick={(e) => criarOuEditarCliente(e)}
           >
             Enviar
           </button>
           <Link
             to="/"
-            className="btn btn-danger"
-            style={{ marginLeft: "10px" }}
+            className="m-4 btn btn-danger"
           >
             Cancelar
           </Link>

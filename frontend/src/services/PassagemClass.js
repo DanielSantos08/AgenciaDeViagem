@@ -2,24 +2,21 @@ import axios from "axios";
 
 const passagemApi =  "http://localhost:8080/passagem";
 
-class Pass{
-    getAllPassagem() {
+class PassagemAxios{
+    getPassagem() {
         return axios.get(passagemApi);
     }
-    
     getPassagemById(idPassagem) {
         return axios.get(passagemApi + "/" + idPassagem);
     }
-    createPassagem(passagem) {
+    postPassagem(passagem) {
         return axios.post(passagemApi, passagem);
-      }
-    
-      updatePassagem(idPassagem, passagem) {
-        return axios.put(passagemApi + "/" + idPassagem, passagem);
-      }
-    
-      deletePassagem(idPassagem) {
+    }
+    deletePassagem(idPassagem) {
         return axios.delete(passagemApi + "/" + idPassagem);
-      }
+    }
+    putPassagem(idPassagem, passagem) {
+        return axios.put(passagemApi + "/" + idPassagem, passagem);
+    }
 }
-export default new Pass();
+export default new PassagemAxios();

@@ -1,0 +1,28 @@
+package com.api.agviagem.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Repository;
+
+import com.api.agviagem.models.Cliente;
+import com.api.agviagem.repositories.ClienteRepository;
+
+@Repository
+public class ImplementsUserDetails implements UserDetailsService {
+
+	@Autowired
+	private ClienteRepository clienteRepository;
+	
+	@Override
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Cliente cliente = clienteRepository.findByEmail(email);
+	
+		if(cliente == null) {
+			throw new UsernameNotFoundException("Usuario não encontrado!");
+		}
+	return cliente;
+	}
+
+}
