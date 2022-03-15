@@ -19,7 +19,7 @@ export default function Produtos() {
     </div>
     <div className="Cards">
     <Card titulo="São Paulo-SP" color="#fff" preco="2.000">{ImgSaoPaulo}</Card>
-    <Card titulo="Curitiba-Ba" color="#fff" preco="2.000">{ImgCuritiba}</Card>
+    <Card titulo="Curitiba-PR" color="#fff" preco="2.000">{ImgCuritiba}</Card>
     <Card titulo="Chapada dos Veadeiros-GO" color="#fff" preco="2.000">{ImgChapada}</Card>
     </div>
     <div className="Cards">
