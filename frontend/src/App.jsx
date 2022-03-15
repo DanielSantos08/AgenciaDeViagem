@@ -12,7 +12,7 @@ import CriarDestino from "./views/Destinos/CriarDestino";
 import Pacotes from "./views/Destinos/Pacotes";
 import Passagem from "./views/Passagem/Passagem";
 import MinhasPassagens from "./views/Passagem/MinhasPassagens";
-import PutDeleteDestinos from './views/Destinos/PutDeleteDestinos'
+import PutDeleteDestinos from './views/Destinos/PutDeleteDestinos';
 
 
 const App = props => (
@@ -28,8 +28,10 @@ const App = props => (
         <Route path="/Pacotes" element={<Pacotes/>} />
         <Route path="/Passagem" element={<Passagem/>} />
         <Route path="/MinhasPassagens" element={<MinhasPassagens/>} />
-        <Route path="/PutDeleteDestinos" element={<PutDeleteDestinos/>} />
+        <Route path="/AtualizarDestino" element={<PutDeleteDestinos/>} />
         <Route path="/Destinos-Update/:idDestino" element={<CriarDestino/>} />
+        <Route path="/AtualizarCadastro/:idPessoa" element={<Cadastro/>} />
+        <Route path="/AtualizarPassagem/:idPassagem" element={<Passagem/>} />
         <Route path="*" element={<Error/>} />
       </Routes>
       <Footer />

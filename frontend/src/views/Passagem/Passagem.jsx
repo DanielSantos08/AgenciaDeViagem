@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import PassagemAxios from "../../services/PassagemClass";
 import DestinosAxios from "../../services/DestinosClass"
+import "../../App.css";
+import ClienteAxios from "../../services/ClienteClass";
 
 export default function Create() {
   const [cliente, setCliente] = useState({idCliente: ""});
   const [destino, setDestino] = useState({idDestino: ""});
   const [destinos, setDestinos] = useState([]);
+  const [clientes, setClientes] = useState([]);
   const [formaPagamento, setFormaPagamento] = useState("");
   const { idPassagem } = useParams();
  
@@ -25,6 +28,21 @@ export default function Create() {
   useEffect(() => {
     getDestinos();
   }, []);
+
+  const getCliente = () => {
+    ClienteAxios.getCliente()
+      .then((response) => {
+        setClientes(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getCliente();
+  }, []);
+
   const criarOuEditarPassagem = (e) => {
     e.preventDefault();
 
@@ -32,11 +50,11 @@ export default function Create() {
 
     if (idPassagem) {
       PassagemAxios.putPassagem(idPassagem, passagem).then((response) => {
-        navigate("/");
+        navigate("/MinhasPassagens");
       });
     } else {
       PassagemAxios.postPassagem(passagem).then((response) => {
-        navigate("/");
+        navigate("/MinhasPassagens");
       });
     }
   };
@@ -61,7 +79,7 @@ export default function Create() {
 
   return (
     <main>
-    <div className="container py-3">
+    <div className="container mb-5 py-3">
       <form>
         <fieldset>
           <legend>
@@ -86,24 +104,30 @@ export default function Create() {
                 </option> ))}
             </select> 
 
-            <label htmlFor="id_cliente" className="form-label">
+            <label htmlFor="id_pessoa" className="form-label">
               ID do Cliente
             </label>
-            <input
-              type="text"
-              id="id_cliente" 
-              className="form-control"
-              placeholder="Digite o seu id de Cliente"
-              value={cliente}
-              onChange={(e) => setCliente({idPessoa: Number.parseInt(e.target.value)} )}
-            /> 
+            <select
+              id="id_pessoa"
+              name="id_pessoa"
+              className="form-select"
+            
+              onChange={(e) => setCliente({idPessoa: Number.parseInt(e.target.value)})}>
+              
+              <option value="DEFAULT" >{idPassagem   ? cliente.name : 'Escolha um Cliente'}</option>
+              {clientes.map((cliente) => (
+                <option key={cliente.idPessoa} value={cliente.idPessoa}>
+                  {cliente.name} 
+                </option> ))}
+            </select> 
+ 
               <label htmlFor="passagem">
             Forma de Pagamento:
             </label>
             <input
               type="text"
               id="formaPagamento"
-              className="form-control"
+              className="form-control mb-5"
               placeholder="Digite a Forma de Pagamento"
               value={formaPagamento}
               onChange={(e) => setFormaPagamento(e.target.value)}
@@ -112,14 +136,14 @@ export default function Create() {
 
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary mb-5"
             onClick={(e) => criarOuEditarPassagem(e)}
           >
-            Enviar
+            Comprar
           </button>
           <Link
-            to="/"
-            className="btn btn-danger"
+            to="/Destinos"
+            className="btn btn-danger mb-5"
             style={{ marginLeft: "10px" }}
           >
             Cancelar

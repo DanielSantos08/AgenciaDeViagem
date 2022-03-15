@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const passagemApi =  "http://localhost:8080/passagem";
+const passagemApi =  "https://agenciadeviagem.herokuapp.com/passagem";
 
 class PassagemAxios{
     getPassagem() {

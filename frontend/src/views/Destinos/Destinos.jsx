@@ -25,7 +25,7 @@ export default function Destinos() {
   }, []);
     
   return (
-    <div className="container">
+    <div >
       <div>
         <React.Fragment >
           <Carousel Img1={ImgSaoPaulo} Img2={ImgRioDeJaneiro} Img3={ImgSalvador} />
@@ -39,7 +39,7 @@ export default function Destinos() {
               <div className="card m-2 d-flex flew-nowrap p-2" style={{ width: "22rem", height: "30rem" }}>
                 <img className="card-img-top" src={destinos?.imgDestino} alt={"Imagem de " + destinos?.city} />
                 <div className="card-body p-0">
-                  <h5 className="card-title"><Link to="/PutDeleteDestinos"><strong>{destinos?.city}</strong></Link></h5>
+                  <h5 className="card-title"><Link to="/AtualizarDestino"><strong>{destinos?.city}</strong></Link></h5>
                   <p className="card-body p-0 h-4">{destinos?.state} - {destinos?.country} </p>
                   <p className="card-body p-0">{destinos?.descricao} </p>
                   <div className='d-flex flex-row justify-content-around m-2'>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ClienteApi =  "http://localhost:8080/clientes";
+const ClienteApi =  "https://agenciadeviagem.herokuapp.com/clientes";
 
 class ClienteAxios{
     getCliente() {

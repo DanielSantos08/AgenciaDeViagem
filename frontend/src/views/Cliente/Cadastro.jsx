@@ -11,7 +11,7 @@ export default function Create() {
   const [rua, setRua] = useState("");
   const [bairro, setBairro] = useState("");
   const [cidade, setCidade] = useState("");
-  const { id } = useParams();
+  const { idPessoa } = useParams();
   const navigate = useNavigate();
 
   const criarOuEditarCliente = (e) => {
@@ -19,8 +19,8 @@ export default function Create() {
 
     const cliente = {name, cpf, email, password, cep, rua, bairro, cidade};
 
-    if (id) {
-      ClienteAxios.putCliente(id, cliente).then((response) => {
+    if (idPessoa) {
+      ClienteAxios.putCliente(idPessoa, cliente).then((response) => {
         navigate("/Cliente");
       });
     } else {
@@ -32,8 +32,8 @@ export default function Create() {
 
   useEffect(() => {
     function getClienteById() {
-      if (id) {
-        ClienteAxios.getClienteById(id)
+      if (idPessoa) {
+        ClienteAxios.getClienteById(idPessoa)
           .then((response) => {
             setName(response.data.name);
             setCpf(response.data.cpf);
@@ -51,14 +51,14 @@ export default function Create() {
     }
 
     getClienteById();
-  }, [id]);
+  }, [idPessoa]);
 
   return (
     <div className="d-flex justify-content-center">
       <form>
         <fieldset>
           <legend>
-            <h2 className="text-center mt-3">{id ? "Editar" : "Crie sua conta"}</h2>
+            <h2 className="text-center mt-3">{idPessoa ? "Editar" : "Crie sua conta"}</h2>
           </legend>
           <div className="d-flex flex-wrap m-4">
             <label htmlFor="cliente" className="m-2">
