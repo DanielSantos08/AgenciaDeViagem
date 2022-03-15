@@ -28,6 +28,9 @@ export default function Menu() {
                          <li className="nav-item btn btn-primary">
                          <Link to="/Cadastro" className="nav-link text-white">Cadastre-se</Link>
                          </li>
+                         <li className="nav-item btn btn-primary">
+                         <Link to="/Cliente" className="nav-link text-white">Perfil</Link>
+                         </li>
                      </ul>
                  </div>
              </div>
